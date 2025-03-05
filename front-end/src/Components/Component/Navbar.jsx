@@ -23,7 +23,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to='/calender' className='nav-item'>
+            <Link to='/calendar' className='nav-item'>
               Annual Calendar
             </Link>
           </li>
