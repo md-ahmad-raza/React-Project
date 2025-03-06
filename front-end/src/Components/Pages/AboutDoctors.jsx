@@ -2,17 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../Style/AboutDoctors.css";
 
-// const doctorsimages = [
-//   { id: 1, image: "public/doctor1.png" },
-//   { id: 2, name: "Dr. Emily Carter", image: "/images/doctor2.png" },
-//   { id: 3, name: "Dr. John Doe", image: "/images/doctor3.png" },
-// ];
 
 // Doctor Data
 const doctors = [
   {
     id: 1,
-    name: "Dr. Steve Smith",
+    name: "Dr.Smith",
     degree: "MBBS, MD- Surgeon",
     experience: "4 Yrs",
     about: "A surgeon specializing in comprehensive medical care.",
@@ -36,8 +31,8 @@ const doctors = [
   },
   {
     id: 4,
-    name: "Dr. Sunita",
-    degree: "MBBS, Dental",
+    name: "Dr.Sophie Taylor",
+    degree: "BDS, Dental Care",
     experience: "3 Yrs",
     about: "A Dental Care Expert.",
     image: "doctor4.png",

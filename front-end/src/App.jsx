@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import Header from "./Components/Component/Header";
 import Navbar from "./Components/Component/Navbar";
 import Footer from "./Components/Component/Footer";
@@ -21,9 +20,8 @@ function App() {
           <Route path='/calendar' element={<AnnualCalendar />} />
           <Route path='/appointment' element={<Appointment />} />
           <Route path='/appointment/:doctorId' element={<Appointment />} />{" "}
-          {/* Fixed Route */}
           <Route path='/doctors' element={<AboutDoctors />} />
-          <Route path='/about' element={<About us/>} />
+          <Route path='/about' element={<About-us/>} />
           <Route path='/complain' element={<h2>Complain Page</h2>} />
           <Route path='/login' element={<h2>Login Page</h2>} />
           <Route path='/gallery' element={<h2>Gallery Page</h2>} />
