@@ -10,7 +10,7 @@ const AnnualCalendar = () => {
     {
       name: "February",
       days: 28,
-      holidays: ["Valentine's Day (14th)", "Presidents' Day (19th)"],
+      holidays: ["Valentine's Day (15th)", "Presidents' Day (19th)"],
     },
     { name: "March", days: 31, holidays: ["St. Patrick's Day (17th)"] },
     {
