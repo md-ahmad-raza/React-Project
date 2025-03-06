@@ -57,7 +57,7 @@ const AboutDoctors = () => {
 
   return (
     <div className='doctors-page'>
-      <h2 className='title'>Meet Our DOCTORS</h2>
+      <h2 className='title'>Our Doctors</h2>
       <div className='doctors-container'>
         {doctors.map((doctor) => (
           <div className='doctor-card' key={doctor.id}>
