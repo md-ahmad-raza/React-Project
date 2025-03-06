@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          Smart Hospital
+          Doctor Appointment Book
         </Link>
         <button className="menu-toggle" onClick={toggleMenu}>
           ☰
