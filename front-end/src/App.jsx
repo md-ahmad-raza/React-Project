@@ -6,7 +6,9 @@ import Home from "./Components/Pages/Home";
 import AnnualCalendar from "./Components/Pages/AnnualCalender";
 import Appointment from "./Components/Pages/Appointment";
 import AboutDoctors from "./Components/Pages/AboutDoctors";
-import About from "./Components/Pages/About-us";
+import About from "./Components/Pages/About";
+import Gallery from "./Components/Pages/Gallery";
+import Contact from "./Components/Pages/Contact";
 
 
 function App() {
@@ -21,11 +23,13 @@ function App() {
           <Route path='/appointment' element={<Appointment />} />
           <Route path='/appointment/:doctorId' element={<Appointment />} />{" "}
           <Route path='/doctors' element={<AboutDoctors />} />
-          <Route path='/about' element={<About-us/>} />
+          <Route path='/about' element={<About />} />
+          <Route path='/gallery' element={<Gallery/>} />
+          <Route path='/contact' element={<Contact/>} />
           <Route path='/complain' element={<h2>Complain Page</h2>} />
           <Route path='/login' element={<h2>Login Page</h2>} />
-          <Route path='/gallery' element={<h2>Gallery Page</h2>} />
-          <Route path='/contact' element={<h2>Contact Us</h2>} />
+    
+        
         </Routes>
         <Footer />
       </div>

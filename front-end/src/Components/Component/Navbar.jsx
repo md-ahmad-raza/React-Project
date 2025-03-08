@@ -10,35 +10,49 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
+    <nav className='navbar'>
+      <div className='navbar-container'>
+        <Link to='/' className='navbar-logo'>
           Doctor Appointment Book
         </Link>
-        <button className="menu-toggle" onClick={toggleMenu}>
+        <button className='menu-toggle' onClick={toggleMenu}>
           ☰
         </button>
         <ul className={`nav-links ${isMobileMenuOpen ? "mobile-menu" : ""}`}>
           <li>
-            <Link to="/" className="nav-item">Home</Link>
+            <Link to='/' className='nav-item'>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/calendar" className="nav-item">Annual Calendar</Link>
+            <Link to='/calendar' className='nav-item'>
+              Annual Calendar
+            </Link>
           </li>
           <li>
-            <Link to="/appointment" className="nav-item">Appointment</Link>
+            <Link to='/appointment' className='nav-item'>
+              Appointment
+            </Link>
           </li>
           <li>
-            <Link to="/doctors" className="nav-item">Doctors</Link>
+            <Link to='/doctors' className='nav-item'>
+              Doctors
+            </Link>
           </li>
           <li>
-            <Link to="/about" className="nav-item">About Us</Link>
+            <Link to='/about' className='nav-item'>
+              About Us
+            </Link>
           </li>
           <li>
-            <Link to="/gallery" className="nav-item">Gallery</Link>
+            <Link to='/gallery' className='nav-item'>
+              Gallery
+            </Link>
           </li>
           <li>
-            <Link to="/contact" className="nav-item">Contact Us</Link>
+            <Link to='/contact' className='nav-item'>
+              Contact Us
+            </Link>
           </li>
         </ul>
       </div>
