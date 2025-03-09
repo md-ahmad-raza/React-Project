@@ -9,7 +9,9 @@ import AboutDoctors from "./Components/Pages/AboutDoctors";
 import About from "./Components/Pages/About";
 import Gallery from "./Components/Pages/Gallery";
 import Contact from "./Components/Pages/Contact";
-
+import Login from "./Components/Pages/Login";
+import Signup from "./Components/Pages/Signup";
+import Complain from "./Components/Pages/Complain";
 
 function App() {
   return (
@@ -24,12 +26,11 @@ function App() {
           <Route path='/appointment/:doctorId' element={<Appointment />} />{" "}
           <Route path='/doctors' element={<AboutDoctors />} />
           <Route path='/about' element={<About />} />
-          <Route path='/gallery' element={<Gallery/>} />
-          <Route path='/contact' element={<Contact/>} />
-          <Route path='/complain' element={<h2>Complain Page</h2>} />
-          <Route path='/login' element={<h2>Login Page</h2>} />
-    
-        
+          <Route path='/gallery' element={<Gallery />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/complain' element={<Complain />} />
         </Routes>
         <Footer />
       </div>

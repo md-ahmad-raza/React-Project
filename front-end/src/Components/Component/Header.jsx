@@ -11,9 +11,9 @@ const Header = () => {
           </a>
         </div>
         <div className='header-right'>
-        <Link to='/profile' className='profile-link'>
-          👤 Profile
-        </Link>
+          <Link to='/profile' className='profile-link'>
+            👤 Profile
+          </Link>
 
           <Link to='/complain' className='complain-link'>
             📝 Complain
