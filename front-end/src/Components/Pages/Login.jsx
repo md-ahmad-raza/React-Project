@@ -1,6 +1,23 @@
+import { useNavigate } from "react-router-dom";
 import "../Style/Login.css"; // Separate CSS file for styling
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    // Example logic for redirection based on email type
+    if (email === "admin@example.com" && password === "adminpass") {
+      navigate("/adminPanel");
+    } else {
+      navigate("/");
+    }
+  };
+
   return (
     <div className='login-page'>
       <div className='login-wrapper'>
@@ -8,14 +25,15 @@ const LoginPage = () => {
         <div className='login-box'>
           <h2>Login Here</h2>
 
-          <form>
-              <div className='input-group'>
+          <form onSubmit={handleLogin}>
+            <div className='input-group'>
               <label htmlFor='email'>
                 <i className='icon-envelope'></i>
               </label>
               <input
                 type='email'
                 id='email'
+                name='email'
                 placeholder='e.g. email@example.com'
                 required
               />
@@ -27,6 +45,7 @@ const LoginPage = () => {
               <input
                 type='password'
                 id='password'
+                name='password'
                 placeholder='e.g. password'
                 required
               />
@@ -34,7 +53,7 @@ const LoginPage = () => {
             <button type='submit' className='login-btn'>
               Login
             </button>
-            <div class='login-link'>
+            <div className='login-link'>
               <p>
                 <b>
                   Don't have an account?/ <a href='/signup'>Signup</a>

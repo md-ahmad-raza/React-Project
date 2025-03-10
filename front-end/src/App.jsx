@@ -12,6 +12,7 @@ import Contact from "./Components/Pages/Contact";
 import Login from "./Components/Pages/Login";
 import Signup from "./Components/Pages/Signup";
 import Complain from "./Components/Pages/Complain";
+import AdminPanel from "./Components/AdminPanel/AdminPanel";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/calendar' element={<AnnualCalendar />} />
           <Route path='/appointment' element={<Appointment />} />
-          <Route path='/appointment/:doctorId' element={<Appointment />} />{" "}
+          <Route path='/appointment/:doctorId' element={<Appointment />} />
           <Route path='/doctors' element={<AboutDoctors />} />
           <Route path='/about' element={<About />} />
           <Route path='/gallery' element={<Gallery />} />
@@ -31,6 +32,8 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/complain' element={<Complain />} />
+          {/* AdminPanel */}
+          <Route path='/adminPanel' element={<AdminPanel />} />
         </Routes>
         <Footer />
       </div>
