@@ -13,6 +13,10 @@ import Login from "./Components/Pages/Login";
 import Signup from "./Components/Pages/Signup";
 import Complain from "./Components/Pages/Complain";
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
+import AllPatients from "./Components/AdminPanel/AllPatients";
+import NewPatients from "./Components/AdminPanel/NewPatients";
+import AddDoctors from "./Components/AdminPanel/AddDoctors";
+import EditDoctors from "./Components/AdminPanel/EditDoctors";
 
 function App() {
   return (
@@ -34,6 +38,10 @@ function App() {
           <Route path='/complain' element={<Complain />} />
           {/* AdminPanel */}
           <Route path='/adminPanel' element={<AdminPanel />} />
+          <Route path='/adminPanel' element={<AllPatients  />} />
+          <Route path='/adminPanel' element={<NewPatients />} />
+          <Route path='/adminPanel' element={<AddDoctors />} />
+          <Route path='/adminPanel' element={<EditDoctors />} />
         </Routes>
         <Footer />
       </div>
