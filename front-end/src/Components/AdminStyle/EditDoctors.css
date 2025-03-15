@@ -20,7 +20,7 @@
   margin: 10px;
 }
 .doctor-table {
-  width: 115%; /* Full width */
+  width: 100%; /* Full width */
   border-collapse: collapse;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

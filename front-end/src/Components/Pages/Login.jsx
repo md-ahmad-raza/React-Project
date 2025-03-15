@@ -11,7 +11,7 @@ const LoginPage = () => {
     const password = e.target.password.value;
 
     // Example logic for redirection based on email type
-    if (email === "admin@example.com" && password === "adminpass") {
+    if (email === "abc@admin.com" && password === "123") {
       navigate("/adminPanel");
     } else {
       navigate("/");

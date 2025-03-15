@@ -46,12 +46,22 @@ const Patients = [
 
 const EditPatients = () => {
   const [patientData, setPatientData] = useState(Patients);
+  const [editMode, setEditMode] = useState(null);
 
   const handleChange = (id, field, value) => {
     const updatedPatients = patientData.map((patient) =>
       patient.id === id ? { ...patient, [field]: value } : patient
     );
     setPatientData(updatedPatients);
+  };
+
+  const handleEdit = (id) => {
+    setEditMode(id);
+  };
+
+  const handleSave = (id) => {
+    setEditMode(null);
+    alert(`Patient ID: ${id} edited successfully!`);
   };
 
   const handleDelete = (id) => {
@@ -67,12 +77,12 @@ const EditPatients = () => {
   };
 
   return (
-    <div className='edit-doctors-page'>
+    <div className='edit-patients-page'>
       <h2 className='title'>Patients CRUD Operation</h2>
       <h3 className='title-text'>Edit, Delete, Update</h3>
 
-      <form className='edit-doctors-form' onSubmit={handleSubmit}>
-        <table className='doctor-table'>
+      <form className='edit-patients-form' onSubmit={handleSubmit}>
+        <table className='patients-table'>
           <thead>
             <tr>
               <th>Patient Name</th>
@@ -94,6 +104,7 @@ const EditPatients = () => {
                       handleChange(patient.id, "name", e.target.value)
                     }
                     placeholder='Patient Name'
+                    disabled={editMode !== patient.id}
                   />
                 </td>
                 <td>
@@ -104,6 +115,7 @@ const EditPatients = () => {
                       handleChange(patient.id, "email", e.target.value)
                     }
                     placeholder='Email'
+                    disabled={editMode !== patient.id}
                   />
                 </td>
                 <td>
@@ -114,6 +126,7 @@ const EditPatients = () => {
                       handleChange(patient.id, "phone", e.target.value)
                     }
                     placeholder='Phone'
+                    disabled={editMode !== patient.id}
                   />
                 </td>
                 <td>
@@ -124,6 +137,7 @@ const EditPatients = () => {
                       handleChange(patient.id, "date", e.target.value)
                     }
                     placeholder='Date'
+                    disabled={editMode !== patient.id}
                   />
                 </td>
                 <td>
@@ -134,9 +148,27 @@ const EditPatients = () => {
                       handleChange(patient.id, "time", e.target.value)
                     }
                     placeholder='Time'
+                    disabled={editMode !== patient.id}
                   />
                 </td>
                 <td className='actions'>
+                  {editMode === patient.id ? (
+                    <button
+                      type='button'
+                      className='save-btn'
+                      onClick={() => handleSave(patient.id)}
+                    >
+                      Save
+                    </button>
+                  ) : (
+                    <button
+                      type='button'
+                      className='edit-btn'
+                      onClick={() => handleEdit(patient.id)}
+                    >
+                      Edit
+                    </button>
+                  )}
                   <button
                     type='button'
                     className='delete-btn'

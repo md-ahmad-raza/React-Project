@@ -1,4 +1,3 @@
-// AddDoctors.jsx
 import React, { useState } from "react";
 import "../AdminStyle/Add Doctors.css";
 
@@ -8,25 +7,45 @@ const AddDoctors = () => {
     degree: "",
     experience: "",
     about: "",
-    image: "",
+    image: null,
   });
+
+  const [preview, setPreview] = useState(null); // For image preview
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDoctorData({ ...doctorData, [name]: value });
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setDoctorData({ ...doctorData, image: file });
+      setPreview(URL.createObjectURL(file)); // Preview the selected image
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!doctorData.image) {
+      alert("Please select an image before submitting.");
+      return;
+    }
+
     console.log("Doctor Added:", doctorData);
     alert("Doctor successfully added!");
+
+    // Reset data and preview after submission
     setDoctorData({
       name: "",
       degree: "",
       experience: "",
       about: "",
-      image: "",
+      image: null,
     });
+
+    setPreview(null);
   };
 
   return (
@@ -64,14 +83,18 @@ const AddDoctors = () => {
           onChange={handleChange}
           required
         />
-        <input
-          type='text'
-          name='image'
-          placeholder='Image URL'
-          value={doctorData.image}
-          onChange={handleChange}
-        />
-        <button type='submit' className='submit-btn'>
+
+        {/* Image Upload Section */}
+        <input type='file' accept='image/*' onChange={handleImageChange} />
+
+        {/* Image Preview */}
+        {preview && (
+          <div className='image-preview'>
+            <img src={preview} alt='Doctor Preview' />
+          </div>
+        )}
+
+        <button type='submit' className='submit-btn1'>
           Add Doctor
         </button>
       </form>
