@@ -1,5 +1,5 @@
-body {
-  font-family: 'Arial', sans-serif;
+admin-panel-body {
+  font-family: "Arial", sans-serif;
   background-color: #f0f2f5;
   margin: 0;
   padding: 0;
@@ -95,19 +95,19 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
   body {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .sidebar {
-      width: 100%;
-      position: relative;
-      height: auto;
-      padding: 20px;
+    width: 100%;
+    position: relative;
+    height: auto;
+    padding: 20px;
   }
 
   .main-content {
-      margin-left: 0;
-      margin-top: 20px;
-      width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+    width: 100%;
   }
 }

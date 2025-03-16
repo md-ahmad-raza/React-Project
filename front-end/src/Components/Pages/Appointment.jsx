@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../Style/Appointment.css";
 
 const BookAppointment = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const [formData, setFormData] = useState({
     reason: "",
     name: "",
@@ -10,6 +13,7 @@ const BookAppointment = () => {
     date: "",
     time: "",
   });
+
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -19,8 +23,14 @@ const BookAppointment = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { reason, name, email, phone, date, time } = formData;
+
     if (reason && name && email && phone && date && time) {
       setMessage("Appointment Booked Successfully!");
+
+      // Redirect to success page after 1 second
+      setTimeout(() => {
+        navigate("/AppointmentSuccess");
+      }, 1000);
     } else {
       setMessage("Please fill in all fields.");
     }
