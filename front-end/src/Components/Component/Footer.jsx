@@ -64,7 +64,7 @@ const Footer = () => {
                   alt='Address Icon'
                   className='contact-icon'
                 />
-                AirPort main Road, Janakpur
+               123 AirPort main Road, Wellness City, Janakpur
               </li>
             </ul>
           </div>

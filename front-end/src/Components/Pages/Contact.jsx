@@ -11,7 +11,7 @@ const ContactUs = () => {
       <div className='contact-content'>
         {/* Contact Form */}
         <div className='contact-form'>
-          <h3>Get in Touch</h3>
+          <h3>Give Feedback</h3>
           <form>
             <div className='form-group'>
               <label htmlFor='name'>Name</label>
@@ -38,20 +38,14 @@ const ContactUs = () => {
         {/* Contact Info */}
         <div className='contact-info'>
           <h3>Our Address</h3>
-          <p>1234 Healthcare Blvd, Wellness City, Country</p>
+          <p>123 AirPort main Road, Wellness City, Janakpur</p>
           <p>Email: contact@healthcare.com</p>
-          <p>Phone: +1 234 567 890</p>
+          <p>Phone: +977 234 567 8910</p>
 
           <h3>Follow Us</h3>
           <div className='social-icons'>
             <a href='#' aria-label='Facebook'>
               <img src='facebook.png' alt='Facebook' />
-            </a>
-            <a href='#' aria-label='Twitter'>
-              <img src='twitter.png' alt='Twitter' />
-            </a>
-            <a href='#' aria-label='Instagram'>
-              <img src='instagram.png' alt='Instagram' />
             </a>
             <a href='#' aria-label='LinkedIn'>
               <img src='linkedin.png' alt='LinkedIn' />
