@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className='navbar'>
       <div className='navbar-container'>
         <Link to='/' className='navbar-logo'>
-          Doctor Appointment Book
+          Doctor's Appointment Book
         </Link>
         <button className='menu-toggle' onClick={toggleMenu}>
           ☰

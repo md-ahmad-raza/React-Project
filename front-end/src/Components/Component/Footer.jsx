@@ -16,12 +16,6 @@ const Footer = () => {
                 <a href='/about'>About</a>
               </li>
               <li>
-                <a href='/academics'>Academics</a>
-              </li>
-              <li>
-                <a href='/events'>Events</a>
-              </li>
-              <li>
                 <a href='/gallery'>Gallery</a>
               </li>
               <li>
@@ -54,7 +48,7 @@ const Footer = () => {
                   alt='Email Icon'
                   className='contact-icon'
                 />
-                smarthospitalrc@gmail.com
+                abc@gmail.com
               </li>
               <li className='contact-item'>
                 <img
@@ -70,7 +64,7 @@ const Footer = () => {
                   alt='Address Icon'
                   className='contact-icon'
                 />
-                25 Kings Street, CA
+                AirPort main Road, Janakpur
               </li>
             </ul>
           </div>
@@ -79,7 +73,7 @@ const Footer = () => {
         {/* Footer Bottom */}
       </footer>
       <div className='footer-bottom'>
-        © Smart Hospital & Research Center 2024 All rights reserved
+        © abc Hospital & Research Center 2025 All rights reserved
       </div>
     </>
   );
