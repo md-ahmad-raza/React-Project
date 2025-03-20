@@ -66,7 +66,7 @@ const BookAppointment = () => {
               <option value=''>Select a reason</option>
               <option value='checkup'>Yearly Check-Up</option>
               <option value='consultation'>Consultation</option>
-              <option value='followup'>Follow-Up</option>
+              <option value='followup'>Monthly Check-Up</option>
             </select>
 
             <label htmlFor='name'>Name</label>

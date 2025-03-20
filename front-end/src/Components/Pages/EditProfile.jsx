@@ -5,9 +5,9 @@ import "../Style/EditProfile.css"; // Ensure this path matches your project stru
 const EditProfile = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: "JohnDoe123",
-    email: "johndoe@example.com",
-    phone: "+1 234 567 890",
+    username: "Ahmad Raza",
+    email: "ar@gmail.com",
+    phone: "+91 234 567 890",
   });
 
   const handleChange = (e) => {
@@ -62,8 +62,16 @@ const EditProfile = () => {
           </div>
 
           <div className='edit-actions'>
-            <button type='submit' className='save-btn'>Save</button>
-            <button type='button' className='cancel-btn' onClick={() => navigate("/profile")}>Cancel</button>
+            <button type='submit' className='save-btn'>
+              Save
+            </button>
+            <button
+              type='button'
+              className='cancel-btn'
+              onClick={() => navigate("/profile")}
+            >
+              Cancel
+            </button>
           </div>
         </form>
       </div>
