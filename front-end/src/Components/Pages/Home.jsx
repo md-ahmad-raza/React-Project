@@ -23,6 +23,7 @@ const Home = () => {
     { src: "image9.jpg", caption: "Seamless Virtual Healthcare Experience" },
     { src: "image10.jpg", caption: "Personalized Care, Just a Click Away" },
   ];
+  //git
 
   const latestNews = [
     "🚑 Emergency services are now 24/7!",
