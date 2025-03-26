@@ -43,7 +43,7 @@ const ContactUs = () => {
           <p>Phone: +977 234 567 8910</p>
           {/* <p>Phone: +977 234 567 8910</p>
           <p>Phone: +977 234 567 8910</p> */}
-
+{/* asdadf */}
           <h3>Follow Us</h3>
           <div className='social-icons'>
             <a href='#' aria-label='Facebook'>
