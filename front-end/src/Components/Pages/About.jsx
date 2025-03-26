@@ -20,6 +20,14 @@ const AboutUs = () => {
             cutting-edge facilities, and a patient-centric approach, we strive
             to provide unparalleled care to our community.
           </p>
+
+
+          <p>
+            Welcome to our healthcare center, where your health and well-being
+            are our top priorities. With a team of world-class specialists,
+            cutting-edge facilities, and a patient-centric approach, we strive
+            to provide unparalleled care to our community.
+          </p>
           <p>
             Our journey began with a vision to revolutionize healthcare services
             by integrating compassion, technology, and expertise. Today, we are
