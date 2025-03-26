@@ -69,6 +69,10 @@ const AboutDoctors = () => {
               </p>
               <p>
                 <strong>About:</strong> {doctor.about}
+                <h1 >mehatab added</h1>
+                <h1 >mehatab added</h1>
+                <h1 >mehatab added</h1>
+
               </p>
               <button
                 className='book-btn'

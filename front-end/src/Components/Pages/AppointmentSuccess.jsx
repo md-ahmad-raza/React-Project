@@ -10,6 +10,7 @@ const AppointmentSucess = () => {
         <a href='/'>Return to Home Page</a>
       </div>
     </div>
+    //
   );
 };
 
