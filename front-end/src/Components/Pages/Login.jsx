@@ -37,6 +37,8 @@ const LoginPage = () => {
                 placeholder='e.g. email@example.com'
                 required
               />
+
+              {/* adfgdfg */}
             </div>
             <div className='input-group'>
               <label htmlFor='password'>
