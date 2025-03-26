@@ -41,6 +41,8 @@ const ContactUs = () => {
           <p>123 AirPort main Road, Wellness City, Janakpur</p>
           <p>Email: contact@healthcare.com</p>
           <p>Phone: +977 234 567 8910</p>
+          {/* <p>Phone: +977 234 567 8910</p>
+          <p>Phone: +977 234 567 8910</p> */}
 
           <h3>Follow Us</h3>
           <div className='social-icons'>
