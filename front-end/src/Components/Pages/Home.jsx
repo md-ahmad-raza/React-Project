@@ -119,6 +119,19 @@ const Home = () => {
             We performing surgical procedures to diagnose or treat diseases or
             injuries by the well experienced Doctors.
           </p>
+
+
+       
+             <p>
+            We performing surgical procedures to diagnose or treat diseases or
+            injuries by the well experienced Doctors.
+          </p>
+
+
+          <p>
+            We performing surgical procedures to diagnose or treat diseases or
+            injuries by the well experienced Doctors.
+          </p>
           <a href="/doctors">
             <button>See Doctors</button>
         </a>
@@ -185,6 +198,10 @@ const Home = () => {
               <img src='service-icon4.png' alt='Icon 4' />
             </div>
             <h3>Dental Care</h3>
+            <p>
+              High-quality dental care services with experienced professionals.
+            </p>
+
             <p>
               High-quality dental care services with experienced professionals.
             </p>

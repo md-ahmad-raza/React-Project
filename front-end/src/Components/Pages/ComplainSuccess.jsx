@@ -9,6 +9,7 @@ const ComplainSuccess = () => {
         <p>Your Complaint has been Submited successfully.</p>
         <a href='/'>Return to Home Page</a>
       </div>
+      <h1 >mehatab added</h1> <h1 >mehatab added</h1>
     </div>
   );
 };
