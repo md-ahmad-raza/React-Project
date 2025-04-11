@@ -29,7 +29,7 @@ import AllPatients from "./Components/AdminPanel/AllPatients";
 import NewPatients from "./Components/AdminPanel/NewPatients";
 import AddDoctors from "./Components/AdminPanel/AddDoctors";
 import EditDoctors from "./Components/AdminPanel/EditDoctors";
-
+import AppointmentList from "./Components/AdminPanel/AppointmentList";
 
 function App() {
   return (
@@ -83,6 +83,7 @@ function MainLayout() {
         <Route path='/newPatients' element={<NewPatients />} />
         <Route path='/addDoctors' element={<AddDoctors />} />
         <Route path='/editDoctors' element={<EditDoctors />} />
+        <Route path='/appointmentList' element={<AppointmentList />} />
       </Routes>
 
       {/* Render Footer only if not in admin routes */}

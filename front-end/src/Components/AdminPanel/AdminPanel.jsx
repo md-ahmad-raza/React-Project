@@ -10,7 +10,7 @@ const AdminPanel = () => {
           <h1>Admin Panel</h1>
           <ul>
             <li>
-              <a href='/allPatients'>Show All Patients</a>
+              <a href='/appointmentList'>Show All Patients</a>
             </li>
             <li>
               <a href='/newPatients'>Show New Registered Patients</a>

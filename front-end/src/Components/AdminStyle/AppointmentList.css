@@ -1,0 +1,89 @@
+.appointment-list-page {
+  padding: 20px;
+  background-color: #f4f7fc;
+  min-height: 100vh;
+}
+
+.appointment-list-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-list-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.appointment-table th,
+.appointment-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.appointment-table th {
+  background-color: #00cc6d;
+  color: #fff;
+}
+
+.appointment-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.appointment-table tr:hover {
+  background-color: #e6f7ff;
+}
+
+/* Style for Edit button - Green */
+button.edit-btn {
+  background-color: #4caf50; /* green */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.edit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Style for Delete button - Red */
+button.delete-btn {
+  background-color: #f44336; /* red */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Style for Update button - Blue */
+button.update-btn {
+  background-color: #2196f3; /* blue */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.update-btn:hover {
+  background-color: #1976d2;
+}
+
