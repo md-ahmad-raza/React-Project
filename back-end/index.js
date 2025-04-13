@@ -17,7 +17,9 @@ app.use(
 
 // Import routes
 const appointmentRouter = require("./App/routes/web/appointmentRoutes");
+const complaintController = require("./App/routes/web/complaintRoutes");
 app.use("/api/appointment", appointmentRouter);
+app.use("/api/complaints", complaintController);
 
 // Basic route for testing
 app.get("/", (req, res) => {

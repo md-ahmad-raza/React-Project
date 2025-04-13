@@ -22,7 +22,7 @@ const AdminPanel = () => {
               <Link to='/addDoctors'>Add Doctors</Link>
             </li>
             <li>
-              <a href='/Complain box'>Show Complaints</a>
+              <a href='/complainList'>Show Complaints</a>
             </li>
             <li>
               <a href='/login' className='logout-btn'>
