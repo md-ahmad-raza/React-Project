@@ -58,7 +58,7 @@ const BookAppointment = () => {
       );
 
       if (response.status === 200 || response.status === 201) {
-        toast.success("Appointment booked successfully!");
+        // toast.success("Appointment booked successfully!");
 
         setFormData({
           reason: "",
@@ -128,9 +128,9 @@ const BookAppointment = () => {
               value={formData.reason}
             >
               <option value=''>Select a reason</option>
-              <option value='checkup'>Yearly Check-Up</option>
+              <option value='checkup'>Check-Up</option>
+              <option value='admit'>Admit</option>
               <option value='consultation'>Consultation</option>
-              <option value='followup'>Monthly Check-Up</option>
             </select>
 
             <label htmlFor='name'>Name</label>

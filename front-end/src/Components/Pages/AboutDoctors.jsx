@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../Style/AboutDoctors.css";
 
-
 // Doctor Data
 const doctors = [
   {
@@ -69,10 +68,6 @@ const AboutDoctors = () => {
               </p>
               <p>
                 <strong>About:</strong> {doctor.about}
-                <h1 >mehatab added</h1>
-                <h1 >mehatab added</h1>
-                <h1 >mehatab added</h1>
-
               </p>
               <button
                 className='book-btn'

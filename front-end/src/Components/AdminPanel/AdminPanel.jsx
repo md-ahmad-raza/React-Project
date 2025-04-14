@@ -24,6 +24,10 @@ const AdminPanel = () => {
             <li>
               <a href='/complainList'>Show Complaints</a>
             </li>
+
+            <li>
+              <a href='/contactList'>Show FeedBack</a>
+            </li>
             <li>
               <a href='/login' className='logout-btn'>
                 LogOut
@@ -36,7 +40,7 @@ const AdminPanel = () => {
           <h2>Welcome to the Admin Panel</h2>
           <p>
             Select an option from the sidebar to manage patients, doctors, or
-            complaints.
+            complaints and feedback.
           </p>
         </div>
       </div>

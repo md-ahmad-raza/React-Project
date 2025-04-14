@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,7 +8,7 @@ import "../AdminStyle/AppointmentList.css";
 const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [editingAppointment, setEditingAppointment] = useState(null); // To handle the appointment being edited
+  const [editingAppointment, setEditingAppointment] = useState(null);
   const [formData, setFormData] = useState({
     reason: "",
     name: "",
@@ -22,8 +23,7 @@ const AppointmentList = () => {
       const response = await axios.get(
         "http://localhost:3000/api/appointment/view"
       );
-      console.log("Backend response:", response.data); // Debugging
-
+      console.log("Backend response:", response.data);
       const data = response.data.data;
 
       if (!Array.isArray(data)) {
@@ -46,14 +46,10 @@ const AppointmentList = () => {
 
   const handleDelete = async (appointmentId) => {
     try {
-      // Send delete request to the backend
       const response = await axios.delete(
         `http://localhost:3000/api/appointment/delete/${appointmentId}`
       );
-
-      // Check if the deletion was successful
       if (response.status === 200) {
-        // Remove the deleted appointment from the frontend state
         setAppointments(
           appointments.filter((appt) => appt._id !== appointmentId)
         );
@@ -77,7 +73,7 @@ const AppointmentList = () => {
       if (response.status === 200) {
         toast.success("Appointment updated successfully!");
         setEditingAppointment(null);
-        fetchAppointments(); // Refresh the list after update
+        fetchAppointments();
       } else {
         throw new Error("Failed to update appointment");
       }
@@ -100,6 +96,7 @@ const AppointmentList = () => {
       <ToastContainer position='top-center' autoClose={3000} />
       <div className='appointment-list-container'>
         <h2>Appointment List</h2>
+
         {loading ? (
           <p>Loading appointments...</p>
         ) : appointments.length === 0 ? (
@@ -158,9 +155,9 @@ const AppointmentList = () => {
                 value={formData.reason}
               >
                 <option value=''>Select a reason</option>
-                <option value='checkup'>Yearly Check-Up</option>
+                <option value='checkup'>Check-Up</option>
+                <option value='admit'>Admit</option>
                 <option value='consultation'>Consultation</option>
-                <option value='followup'>Monthly Check-Up</option>
               </select>
 
               <label htmlFor='name'>Name</label>
@@ -210,11 +207,9 @@ const AppointmentList = () => {
                 value={formData.time}
               >
                 <option value=''>Select a time</option>
-                {/* Add options as needed */}
                 <option value='08:00 AM'>08:00 AM</option>
                 <option value='09:00 AM'>09:00 AM</option>
                 <option value='10:00 AM'>10:00 AM</option>
-                {/* Add more times as required */}
               </select>
 
               <div className='appointment-footer'>
@@ -236,6 +231,12 @@ const AppointmentList = () => {
             </form>
           </div>
         )}
+      </div>
+
+      <div className='back-to-panel'>
+        <Link to='/adminPanel' className='back-link'>
+          ← Back to Admin Panel
+        </Link>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../AdminStyle/EditDoctors.css";
 
 const doctors = [
@@ -80,6 +81,7 @@ const EditDoctors = () => {
     <div className='edit-doctors-page'>
       <h2 className='title'>Doctors CRUD Operation</h2>
       <h3 className='title-text'>Edit, Delete, Update</h3>
+
       <form className='edit-doctors-form' onSubmit={handleSubmit}>
         <table className='doctor-table'>
           <thead>
@@ -184,6 +186,12 @@ const EditDoctors = () => {
           Update Doctors
         </button>
       </form>
+
+      <div className='back-to-panel'>
+        <Link to='/adminPanel' className='back-link'>
+          ← Back to Admin Panel
+        </Link>
+      </div>
     </div>
   );
 };

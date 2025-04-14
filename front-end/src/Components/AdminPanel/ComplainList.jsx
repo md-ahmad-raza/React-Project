@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -62,7 +63,7 @@ const ComplainList = () => {
     try {
       const updatedData = {
         ...formData,
-        Date: new Date(formData.Date).toISOString(), // ensure ISO format for backend
+        Date: new Date(formData.Date).toISOString(), // ensure ISO format
       };
 
       const response = await axios.put(
@@ -73,7 +74,7 @@ const ComplainList = () => {
       if (response.status === 200) {
         toast.success("Complaint updated successfully!");
         setEditingComplaint(null);
-        fetchComplaints(); // refresh list
+        fetchComplaints();
       } else {
         throw new Error("Failed to update complaint");
       }
@@ -96,6 +97,7 @@ const ComplainList = () => {
       <ToastContainer position='top-center' autoClose={3000} />
       <div className='complain-list-container'>
         <h2>Complaint List</h2>
+
         {loading ? (
           <p>Loading complaints...</p>
         ) : complaints.length === 0 ? (
@@ -202,6 +204,12 @@ const ComplainList = () => {
             </form>
           </div>
         )}
+
+        <div className='back-to-panel'>
+          <Link to='/adminPanel' className='back-link'>
+            ← Back to Admin Panel
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -132,3 +132,19 @@
   flex: 1;
   text-align: right;
 }
+.back-to-panel {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.back-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #0984e3;
+  font-size: 16px;
+}
+
+.back-link:hover {
+  color: #0652dd;
+  text-decoration: underline;
+}
