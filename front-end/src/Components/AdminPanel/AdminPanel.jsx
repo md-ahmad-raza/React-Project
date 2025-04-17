@@ -13,7 +13,7 @@ const AdminPanel = () => {
               <a href='/appointmentList'>Show All Patients</a>
             </li>
             <li>
-              <a href='/newPatients'>Show New Registered Patients</a>
+              <a href='/newAppointments'>Show New Registered Patients</a>
             </li>
             <li>
               <a href='/EditDoctors'>Show All Doctors</a>
@@ -27,6 +27,10 @@ const AdminPanel = () => {
 
             <li>
               <a href='/contactList'>Show FeedBack</a>
+            </li>
+
+            <li>
+              <a href='/signupList'>All Sinup users</a>
             </li>
             <li>
               <a href='/login' className='logout-btn'>

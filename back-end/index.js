@@ -19,9 +19,12 @@ app.use(
 const appointmentRouter = require("./App/routes/web/appointmentRoutes");
 const complaintController = require("./App/routes/web/complaintRoutes");
 const feedbackController = require("./App/routes/web/feedbackRoutes");
+const signupController = require("./App/routes/web/signupRoutes");
 app.use("/api/appointment", appointmentRouter);
 app.use("/api/complaints", complaintController);
 app.use("/api/feedback", feedbackController);
+app.use("/api/signup", signupController);
+
 // Basic route for testing
 app.get("/", (req, res) => {
   res.send("Server is running");

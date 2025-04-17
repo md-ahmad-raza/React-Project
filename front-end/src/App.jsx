@@ -1,4 +1,9 @@
-import {BrowserRouter as Router,Routes,Route,useLocation,} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 // Front End Components
 import Header from "./Components/Component/Header";
@@ -25,12 +30,14 @@ import ComplainSuccess from "./Components/Pages/ComplainSuccess";
 // Admin Panel Pages
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
 import AllPatients from "./Components/AdminPanel/AllPatients";
-import NewPatients from "./Components/AdminPanel/NewPatients";
 import AddDoctors from "./Components/AdminPanel/AddDoctors";
 import EditDoctors from "./Components/AdminPanel/EditDoctors";
 import AppointmentList from "./Components/AdminPanel/AppointmentList";
 import ComplainList from "./Components/AdminPanel/ComplainList";
 import ContactList from "./Components/AdminPanel/ContactList";
+import NewAppointments from "./Components/AdminPanel/NewAppointments";
+import SignupList from "./Components/Pages/SignupList";
+import EditSignup from "./Components/Pages/EditSignup";
 
 function App() {
   return (
@@ -43,23 +50,25 @@ function App() {
 function MainLayout() {
   const location = useLocation();
 
-  // Define admin-only routes
+  // Admin-only routes (make sure to include all exact paths)
   const adminRoutes = [
     "/adminPanel",
     "/allPatients",
-    "/newPatients",
+    "/newAppointments",
     "/addDoctors",
     "/editDoctors",
     "/appointmentList",
     "/complainList",
     "/contactList",
+    "/signupList",
+    "/editSignup",
   ];
 
   const isAdminRoute = adminRoutes.includes(location.pathname);
 
   return (
     <div className='App'>
-      {/* Render Header and Navbar only if not in admin routes */}
+      {/* Show Header and Navbar only if not in admin routes */}
       {!isAdminRoute && <Header />}
       {!isAdminRoute && <Navbar />}
 
@@ -85,15 +94,18 @@ function MainLayout() {
         {/* Admin Panel Routes */}
         <Route path='/adminPanel' element={<AdminPanel />} />
         <Route path='/allPatients' element={<AllPatients />} />
-        <Route path='/newPatients' element={<NewPatients />} />
         <Route path='/addDoctors' element={<AddDoctors />} />
         <Route path='/editDoctors' element={<EditDoctors />} />
         <Route path='/appointmentList' element={<AppointmentList />} />
         <Route path='/complainList' element={<ComplainList />} />
         <Route path='/contactList' element={<ContactList />} />
+        <Route path='/newAppointments' element={<NewAppointments />} />
+        <Route path='/signupList' element={<SignupList />} />
+        <Route path='/editSignup/:id' element={<EditSignup />} />
+
       </Routes>
 
-      {/* Render Footer only if not in admin routes */}
+      {/* Show Footer only if not in admin routes */}
       {!isAdminRoute && <Footer />}
     </div>
   );
