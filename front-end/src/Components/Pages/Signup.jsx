@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Style/Signup.css";
 
 const SignupPage = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -18,8 +21,10 @@ const SignupPage = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:3000/api/signup/insert", formData);
-      alert("User registered successfully");
+      alert("registered successfully");
       setFormData({ username: "", email: "", phone: "", password: "" });
+
+      navigate("/"); // Redirect to homepage after signup
     } catch (err) {
       alert("Signup failed");
       console.error(err);

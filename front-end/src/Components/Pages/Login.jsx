@@ -1,20 +1,41 @@
 import { useNavigate } from "react-router-dom";
-import "../Style/Login.css"; // Separate CSS file for styling
+import "../Style/Login.css"; // Your custom styling
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    // Example logic for redirection based on email type
-    if (email === "abc@admin.com" && password === "123") {
-      navigate("/adminPanel");
-    } else {
-      navigate("/");
+    try {
+      const res = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.status === 200) {
+        alert("Login successful!");
+
+        // You can optionally check if user is admin here
+        if (email === "abc@admin.com") {
+          navigate("/adminPanel");
+        } else {
+          navigate("/"); // Redirect regular users
+        }
+      } else {
+        alert(data.message || "Invalid credentials");
+      }
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
+      console.error("Login Error:", error);
     }
   };
 
@@ -37,9 +58,8 @@ const LoginPage = () => {
                 placeholder='e.g. email@example.com'
                 required
               />
-
-              {/* adfgdfg */}
             </div>
+
             <div className='input-group'>
               <label htmlFor='password'>
                 <i className='icon-lock'></i>
@@ -52,13 +72,15 @@ const LoginPage = () => {
                 required
               />
             </div>
+
             <button type='submit' className='login-btn'>
               Login
             </button>
+
             <div className='login-link'>
               <p>
                 <b>
-                  Don't have an account?/ <a href='/signup'>Signup</a>
+                  Don't have an account? <a href='/signup'>Signup</a>
                 </b>
               </p>
             </div>

@@ -24,6 +24,7 @@ app.use("/api/appointment", appointmentRouter);
 app.use("/api/complaints", complaintController);
 app.use("/api/feedback", feedbackController);
 app.use("/api/signup", signupController);
+app.use("/api/login", signupController);
 
 // Basic route for testing
 app.get("/", (req, res) => {
