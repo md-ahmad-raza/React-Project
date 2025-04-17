@@ -1,20 +1,30 @@
+// Profile.jsx
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "../Style/Profile.css";
+
 const Profile = () => {
   const navigate = useNavigate();
+  const [userData, setUserData] = useState({
+    username: "",
+    email: "",
+    phone: "",
+  });
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("userData");
+    if (storedData) {
+      setUserData(JSON.parse(storedData));
+    }
+  }, []);
 
   const handleLogout = () => {
-    // Clear session data or token
-    localStorage.removeItem("authToken"); // Example for JWT token
-    sessionStorage.clear(); // Clear session storage if used
-    navigate("/logout"); // Navigate to the logout confirmation page
+    localStorage.removeItem("userData");
+    navigate("/logout");
   };
 
-  const handleteditProfile = () => {
-    // Clear session data or token
-    localStorage.removeItem("authToken"); // Example for JWT token
-    sessionStorage.clear(); // Clear session storage if used
-    navigate("/editProfile"); // Navigate to the logout confirmation page
+  const handleEditProfile = () => {
+    navigate("/editProfile");
   };
 
   return (
@@ -24,22 +34,20 @@ const Profile = () => {
         <div className='profile-details'>
           <div className='detail-item'>
             <label>Username:</label>
-            <span>Ahmad Raza</span>
+            <span>{userData.username}</span>
           </div>
-
           <div className='detail-item'>
             <label>Email:</label>
-            <span>abc@example.com</span>
+            <span>{userData.email}</span>
           </div>
-
           <div className='detail-item'>
             <label>Phone:</label>
-            <span>+1 234 567 890</span>
+            <span>{userData.phone}</span>
           </div>
         </div>
 
         <div className='profile-actions'>
-          <button className='edit-btn' onClick={handleteditProfile}>
+          <button className='edit-btn' onClick={handleEditProfile}>
             Edit Profile
           </button>
           <button className='logout-btn' onClick={handleLogout}>

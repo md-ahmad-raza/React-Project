@@ -1,132 +1,161 @@
-const loginModel = require("../../../models/loginModel");
+const loginModel = require("../../models/loginModel");
 
-// Signup (Insert user)
-let loginInsert = async (req, res) => {
+// ✅ Signup (Insert user)
+const bcrypt = require("bcrypt");
+
+const loginInsert = async (req, res) => {
   try {
-    const { username, phone, email, password } = req.body;
+    const { email, password, role } = req.body;
 
-    // Check if user already exists
     const existingUser = await loginModel.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({
-        message: "Email already registered",
-      });
+      return res
+        .status(400)
+        .json({ success: false, message: "Email already registered" });
     }
 
-    const newLogin = new loginModel({
-      username,
-      phone,
-      email,
-      password,
-    });
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    await newLogin.save();
+    const newUser = new loginModel({ email, password: hashedPassword, role });
+    await newUser.save();
 
-    res.status(201).json({
-      message: "Signup successful",
-      data: newLogin,
-    });
+    res
+      .status(201)
+      .json({ success: true, message: "Signup successful", user: newUser });
   } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      error: error.message,
-    });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Internal server error",
+        error: error.message,
+      });
   }
 };
 
-// Login (Check email and password)
-let userLogin = async (req, res) => {
+
+// ✅ View all users
+const loginView = async (req, res) => {
+  try {
+    const users = await loginModel.find();
+    res
+      .status(200)
+      .json({ success: true, message: "All login users", data: users });
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Internal server error",
+        error: error.message,
+      });
+  }
+};
+
+// ✅ Delete a user
+const loginDelete = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedUser = await loginModel.findByIdAndDelete(id);
+
+    if (!deletedUser) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "User deleted successfully",
+        data: deletedUser,
+      });
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Internal server error",
+        error: error.message,
+      });
+  }
+};
+
+// ✅ Update a user
+const loginUpdate = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { email, password, role } = req.body;
+
+    const updatedUser = await loginModel.findByIdAndUpdate(
+      id,
+      { email, password, role },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "User updated successfully",
+        data: updatedUser,
+      });
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Internal server error",
+        error: error.message,
+      });
+  }
+};
+
+const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await loginModel.findOne({ email, password });
-
+    const user = await loginModel.findOne({ email: email.trim() });
     if (!user) {
-      return res.status(401).json({
-        message: "Invalid email or password",
-      });
+      return res
+        .status(401)
+        .json({ success: false, message: "Invalid email or password" });
+    }
+
+    const isMatch = await bcrypt.compare(password.trim(), user.password);
+    if (!isMatch) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Invalid email or password" });
     }
 
     res.status(200).json({
+      success: true,
       message: "Login successful",
+      role: user.role,
       user,
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       error: error.message,
     });
   }
 };
 
-let loginView = async (req, res) => {
-  try {
-    const login = await loginModel.find();
-    res.status(200).json({
-      message: "All login users",
-      data: login,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      error: error.message,
-    });
-  }
-};
 
-let loginDelete = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const login = await loginModel.findByIdAndDelete(id);
-    if (!login) {
-      return res.status(404).json({
-        message: "User not found",
-      });
-    }
-    res.status(200).json({
-      message: "User deleted successfully",
-      data: login,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      error: error.message,
-    });
-  }
-};
-
-let loginUpdate = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { email, password } = req.body;
-
-    const login = await loginModel.findByIdAndUpdate(
-      id,
-      { email, password },
-      { new: true }
-    );
-
-    if (!login) {
-      return res.status(404).json({
-        message: "User not found",
-      });
-    }
-
-    res.status(200).json({
-      message: "User updated successfully",
-      data: login,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      error: error.message,
-    });
-  }
-};
 
 module.exports = {
-  loginInsert,   // Signup
-  userLogin,     // Login
+  loginInsert,
+  userLogin,
   loginView,
   loginDelete,
   loginUpdate,

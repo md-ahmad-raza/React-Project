@@ -1,15 +1,9 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-const loginSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
+const loginSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  role: { type: String, enum: ["admin", "user"], default: "user" },
 });
 
 const loginModel = mongoose.model("login", loginSchema);

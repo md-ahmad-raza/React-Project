@@ -1,47 +1,59 @@
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
-require("dotenv").config();
 const cors = require("cors");
+require("dotenv").config();
 
-// Middleware hai
-app.use(express.json());
+const app = express();
 
+// ✅ Middleware: Increase payload limit to handle base64 image uploads
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+
+// ✅ CORS configuration
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow frontend
-    methods: "GET,POST,PUT,DELETE", // Allow these HTTP methods
-    credentials: true, // Allow cookies (if needed)
+    origin: "http://localhost:5173", // Adjust if your frontend runs on a different port
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
-); //cors ko use kiya
+);
 
-// Import routes
+// ✅ Import routes
 const appointmentRouter = require("./App/routes/web/appointmentRoutes");
-const complaintController = require("./App/routes/web/complaintRoutes");
-const feedbackController = require("./App/routes/web/feedbackRoutes");
-const signupController = require("./App/routes/web/signupRoutes");
-app.use("/api/appointment", appointmentRouter);
-app.use("/api/complaints", complaintController);
-app.use("/api/feedback", feedbackController);
-app.use("/api/signup", signupController);
-app.use("/api/login", signupController);
+const complaintRoutes = require("./App/routes/web/complaintRoutes");
+const feedbackRoutes = require("./App/routes/web/feedbackRoutes");
+const signupRoutes = require("./App/routes/web/signupRoutes");
+const loginRoutes = require("./App/routes/web/loginRoutes");
+const addDoctorsRouter = require("./App/routes/web/addDoctorsRoutes");
 
-// Basic route for testing
+// ✅ Use routes
+app.use("/api/appointment", appointmentRouter);
+app.use("/api/complaints", complaintRoutes);
+app.use("/api/feedback", feedbackRoutes);
+app.use("/api/signup", signupRoutes);
+app.use("/api/login", loginRoutes);
+app.use("/api/addDoctors", addDoctorsRouter);
+
+// ✅ Test route
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
 
-// connect to MongoDB and start server
+// ✅ Connect to MongoDB and start server
 mongoose
-  .connect(process.env.DBURL)
+  .connect(process.env.DBURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
-    console.log("Connected to MongoDB");
-    const PORT = process.env.PORT || 5000;
+    console.log("✅ Connected to MongoDB");
+
+    const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+      console.log(`🚀 Server is running on http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
-    console.error("Error connecting to MongoDB:", err);
+    console.error("❌ MongoDB connection error:", err);
     process.exit(1);
   });

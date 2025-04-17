@@ -1,3 +1,4 @@
+// Signup.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -20,11 +21,22 @@ const SignupPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/signup/insert", formData);
-      alert("registered successfully");
+      const response = await axios.post(
+        "http://localhost:3000/api/signup/insert",
+        formData
+      );
+
+      // Store user data (optional: avoid storing password)
+      const { username, email, phone } = response.data.data;
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({ username, email, phone })
+      );
+
+      alert("Registered successfully!");
       setFormData({ username: "", email: "", phone: "", password: "" });
 
-      navigate("/"); // Redirect to homepage after signup
+      navigate("/login"); // Redirect to login page
     } catch (err) {
       alert("Signup failed");
       console.error(err);
@@ -34,9 +46,8 @@ const SignupPage = () => {
   return (
     <div className='login-page'>
       <div className='login-wrapper'>
-        <h1 className='login-title'>User Signup Panel</h1>
+        <h1 className='login-title'>Signup Here</h1>
         <div className='login-box'>
-          <h2>Signup Here</h2>
           <form onSubmit={handleSubmit}>
             {["username", "email", "phone", "password"].map((field) => (
               <div className='input-group' key={field}>
@@ -60,6 +71,13 @@ const SignupPage = () => {
               Signup
             </button>
           </form>
+          <div className='login-link'>
+            <p>
+              <b>
+                Already have an account? <a href='/login'>Login</a>
+              </b>
+            </p>
+          </div>
         </div>
       </div>
     </div>

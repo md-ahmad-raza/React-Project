@@ -38,33 +38,42 @@
   gap: 15px;
 }
 
-.phone {
-  font-size: 14px;
-  color: #000;
-}
-
-.complain-link {
+.profile-link,
+.complain-link,
+.login-button {
   text-decoration: none;
-  color: #000;
   font-weight: bold;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: background-color 0.2s ease-in-out;
 }
 
+/* Profile Link */
+.profile-link {
+  color: #000;
+}
+.profile-link:hover {
+  color: #007bff;
+}
+
+/* Complain Link */
+.complain-link {
+  color: #000;
+}
 .complain-link:hover {
   color: #dc3545;
 }
 
-/* Login Button */
+/* Login Button Styled as Link */
 .login-button {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
 }
 
 .login-button:hover {
@@ -86,16 +95,14 @@
 
   .login-button {
     width: 100px;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
   .email-link,
-  .phone,
-  .complain-link {
-    font-size: 12px;
-  }
-
+  .profile-link,
+  .complain-link,
   .login-button {
     font-size: 12px;
     padding: 5px 8px;

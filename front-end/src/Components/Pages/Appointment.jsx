@@ -58,8 +58,6 @@ const BookAppointment = () => {
       );
 
       if (response.status === 200 || response.status === 201) {
-        // toast.success("Appointment booked successfully!");
-
         setFormData({
           reason: "",
           name: "",
@@ -106,17 +104,6 @@ const BookAppointment = () => {
       <div className='appointment-container'>
         <div className='appointment-header'>
           <h2>Book Appointment</h2>
-          <div className='header-actions'>
-            <button
-              className='list-btn'
-              onClick={() => navigate("/appointmentList")}
-            >
-              Appointment List
-            </button>
-            <button className='close-btn' onClick={() => navigate("/")}>
-              ×
-            </button>
-          </div>
         </div>
         <div className='appointment-content'>
           <form onSubmit={handleSubmit}>

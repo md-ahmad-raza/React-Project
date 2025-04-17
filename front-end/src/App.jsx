@@ -18,8 +18,7 @@ import AboutDoctors from "./Components/Pages/AboutDoctors";
 import About from "./Components/Pages/About";
 import Gallery from "./Components/Pages/Gallery";
 import Contact from "./Components/Pages/Contact";
-import Login from "./Components/Pages/Login";
-import Signup from "./Components/Pages/Signup";
+
 import Complain from "./Components/Pages/Complain";
 import Profile from "./Components/Pages/Profile";
 import Logout from "./Components/Pages/Logout";
@@ -38,6 +37,9 @@ import ContactList from "./Components/AdminPanel/ContactList";
 import NewAppointments from "./Components/AdminPanel/NewAppointments";
 import SignupList from "./Components/Pages/SignupList";
 import EditSignup from "./Components/Pages/EditSignup";
+import Login from "./Components/Pages/Login";
+import Signup from "./Components/Pages/Signup";
+
 
 function App() {
   return (
@@ -62,6 +64,9 @@ function MainLayout() {
     "/contactList",
     "/signupList",
     "/editSignup",
+    "/login",
+    "/signup",
+    
   ];
 
   const isAdminRoute = adminRoutes.includes(location.pathname);
@@ -82,8 +87,7 @@ function MainLayout() {
         <Route path='/about' element={<About />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
+
         <Route path='/complain' element={<Complain />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/logout' element={<Logout />} />
@@ -101,8 +105,10 @@ function MainLayout() {
         <Route path='/contactList' element={<ContactList />} />
         <Route path='/newAppointments' element={<NewAppointments />} />
         <Route path='/signupList' element={<SignupList />} />
-        <Route path='/editSignup/:id' element={<EditSignup />} />
-
+        <Route path='/editSignup' element={<EditSignup />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+    
       </Routes>
 
       {/* Show Footer only if not in admin routes */}
