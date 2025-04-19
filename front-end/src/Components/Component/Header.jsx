@@ -18,11 +18,11 @@ const Header = () => {
           <Link to='/complain' className='complain-link'>
             📝 Complain
           </Link>
-          <button className='login-button'>
-            <Link to='/login' className='nav-item'>
-              Login
-            </Link>
-          </button>
+
+          {/* Corrected Login Button */}
+          <Link to='/login' className='login-button'>
+            Login
+          </Link>
         </div>
       </div>
     </header>

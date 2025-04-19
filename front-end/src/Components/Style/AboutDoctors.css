@@ -1,115 +1,89 @@
-/* General Styles */
 .doctors-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
+  padding: 2rem;
   background-color: #f8f9fa;
-  padding: 3rem 2rem;
+  min-height: 100vh;
 }
 
-/* Doctors Container */
+.title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
 .doctors-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  width: 90%;
-  max-width: 800px; /* Increased max width */
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
 }
 
-/* Doctor Card */
 .doctor-card {
-  background-color: #fff;
-  padding: 20px;
+  background: white;
   border-radius: 12px;
-  box-shadow: 0 6px 5px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  width: 100%;
+  padding: 1.5rem;
   display: flex;
-  align-items: center;
-  gap: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 1.5rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
 }
 
 .doctor-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
-/* Doctor Image - Changed to Square */
+
 .doctor-image {
   width: 130px;
   height: 200px;
   object-fit: cover;
-  border: 3px solid #fff;
-  border-radius: 8px; /* Optional: Rounded corners, remove if not needed */
+  border-radius: 10px;
 }
 
-/* Doctor Name */
+.doctor-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .doctor-name {
   font-size: 1.4rem;
-  color: #333;
-  margin-bottom: 5px;
+  color: #222;
+  margin: 0 0 0.3rem;
 }
 
-.doctor-title {
-  font-weight: normal;
-  color: #666;
-}
-
-.doctor-bold {
-  font-weight: bold;
-  color: black;
-}
-
-.doctor-highlight {
-  color: #007bff;
-  font-weight: bold;
-}
-
-/* Specialization */
 .doctor-degree {
   font-size: 1rem;
-  color: #666;
-  margin-bottom: 15px;
+  color: #555;
+  margin-bottom: 1rem;
 }
 
-/* Book Appointment Button */
 .book-btn {
-  background: #00C7BE;
+  background-color: #0014c7;
   color: white;
-  font-size: 1rem;
-  padding: 12px 20px;
   border: none;
+  padding: 0.75rem 1.5rem;
   border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-  width: 100%;
-  max-width: 250px;
-  text-align: center;
-  display: block;
-  white-space: nowrap;
+  width: fit-content;
+  margin-top: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .book-btn:hover {
-  background: #0056b3;
+  background-color: #001aff;
   transform: translateY(-2px);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
-  .doctors-page {
-    height: auto;
-    padding: 2rem 1rem;
-  }
-
   .doctor-card {
     flex-direction: column;
-    text-align: center;
     align-items: center;
+    text-align: center;
   }
 
   .doctor-image {
@@ -117,17 +91,13 @@
     height: 110px;
   }
 
-  .doctor-name {
-    font-size: 1.2rem;
-  }
-
-  .doctor-degree {
-    font-size: 0.9rem;
+  .doctor-info {
+    align-items: center;
   }
 
   .book-btn {
-    font-size: 0.9rem;
-    padding: 10px 15px;
     width: 100%;
+    font-size: 0.9rem;
+    padding: 10px;
   }
 }

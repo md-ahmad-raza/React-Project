@@ -1,74 +1,83 @@
-import "../Style/Signup.css"; // Separate CSS file for styling
+// Signup.jsx
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../Style/Signup.css";
 
 const SignupPage = () => {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/signup/insert",
+        formData
+      );
+
+      // Store user data (optional: avoid storing password)
+      const { username, email, phone } = response.data.data;
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({ username, email, phone })
+      );
+
+      alert("Registered successfully!");
+      setFormData({ username: "", email: "", phone: "", password: "" });
+
+      navigate("/login"); // Redirect to login page
+    } catch (err) {
+      alert("Signup failed");
+      console.error(err);
+    }
+  };
+
   return (
     <div className='login-page'>
       <div className='login-wrapper'>
-        <h1 className='login-title'>User Signup Panel</h1>
+        <h1 className='login-title'>Signup Here</h1>
         <div className='login-box'>
-          <h2>Signup Here</h2>
-
-          <form>
-            <div className='input-group'>
-              <label htmlFor='username'>
-                <i className='icon-user'></i>
-              </label>
-              <input
-                type='text'
-                id='username'
-                placeholder='e.g. username'
-                required
-              />
-            </div>
-
-            <div className='input-group'>
-              <label htmlFor='email'>
-                <i className='icon-envelope'></i>
-              </label>
-              <input
-                type='email'
-                id='email'
-                placeholder='e.g. email@example.com'
-                required
-              />
-            </div>
-
-            <div className='input-group'>
-              <label htmlFor='phone'>
-                <i className='icon-phone'></i>
-              </label>
-              <input
-                type='tel'
-                id='phone'
-                placeholder='e.g. Enter your phone number'
-                required
-              />
-            </div>
-
-            <div className='input-group'>
-              <label htmlFor='password'>
-                <i className='icon-lock'></i>
-              </label>
-              <input
-                type='password'
-                id='password'
-                placeholder='e.g. password'
-                required
-              />
-            </div>
-
+          <form onSubmit={handleSubmit}>
+            {["username", "email", "phone", "password"].map((field) => (
+              <div className='input-group' key={field}>
+                <input
+                  type={
+                    field === "email"
+                      ? "email"
+                      : field === "password"
+                      ? "password"
+                      : "text"
+                  }
+                  id={field}
+                  placeholder={`Enter your ${field}`}
+                  value={formData[field]}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            ))}
             <button type='submit' className='login-btn'>
               Signup
             </button>
-
-            <div className='login-link'>
-              <p>
-                <b>
-                  Already have an account?/ <a href='login'>Login</a>
-                </b>
-              </p>
-            </div>
           </form>
+          <div className='login-link'>
+            <p>
+              <b>
+                Already have an account? <a href='/login'>Login</a>
+              </b>
+            </p>
+          </div>
         </div>
       </div>
     </div>

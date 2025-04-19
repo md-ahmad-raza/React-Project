@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import "../Style/Home.css"; // Combined CSS file for Home and Doctors components
+// Combined CSS file for Home and Doctors components
+import "../Style/Home.css";
 
 const Home = () => {
   // Carousel state
@@ -23,6 +24,7 @@ const Home = () => {
     { src: "image9.jpg", caption: "Seamless Virtual Healthcare Experience" },
     { src: "image10.jpg", caption: "Personalized Care, Just a Click Away" },
   ];
+  //git
 
   const latestNews = [
     "🚑 Emergency services are now 24/7!",
@@ -102,47 +104,51 @@ const Home = () => {
         </div>
       </div>
       {/* Features Section */}
-      <div className='features-section'>
-        <div className='feature-card'>
+      <div className='features1-section'>
+        <div className='feature1-card'>
           <h3>General Physician</h3>
           <p>
             We provides a range of non-surgical health care to patients by Top
             Doctors.
           </p>
-          <a href="/doctors">
+          <a href='/doctors'>
             <button>See Doctors</button>
-        </a>
+          </a>
         </div>
-        <div className='feature-card'>
+        <div className='feature1-card'>
           <h3>Surgeon</h3>
           <p>
             We performing surgical procedures to diagnose or treat diseases or
             injuries by the well experienced Doctors.
           </p>
+<<<<<<< HEAD
           <a href="/doctors">
+=======
+
+          <a href='/doctors'>
+>>>>>>> 475c5a084f4aba3c0addf1def3b359ad4e08c05c
             <button>See Doctors</button>
-        </a>
+          </a>
         </div>
-        <div className='feature-card'>
+        <div className='feature1-card'>
           <h3>Dental Care</h3>
           <p>
             diagnose, prevent, and treat diseases and conditions of the teeth,
             gums, and mouth.
           </p>
-          <a href="/doctors">
+          <a href='/doctors'>
             <button>See Doctors</button>
-         </a>
+          </a>
         </div>
-        <div className='feature-card'>
+        <div className='feature1-card'>
           <h3>Orthopedics</h3>
           <p>
             we are carying the musculoskeletal system, which includes bones,
             joints, muscles, ligaments, and tendons.
           </p>
-          <a href="/doctors">
+          <a href='/doctors'>
             <button>See Doctors</button>
-        </a>
-
+          </a>
         </div>
       </div>
       {/* Featured Services Section */}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import "../AdminStyle/Add Doctors.css";
 
 const AddDoctors = () => {
@@ -10,7 +11,7 @@ const AddDoctors = () => {
     image: null,
   });
 
-  const [preview, setPreview] = useState(null); // For image preview
+  const [preview, setPreview] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,32 +21,53 @@ const AddDoctors = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setDoctorData({ ...doctorData, image: file });
-      setPreview(URL.createObjectURL(file)); // Preview the selected image
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setDoctorData({ ...doctorData, image: reader.result });
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!doctorData.image) {
-      alert("Please select an image before submitting.");
-      return;
+    const payload = {
+      DoctorName: doctorData.name,
+      Degree: doctorData.degree,
+      Experience: doctorData.experience,
+      About: doctorData.about,
+      Image: doctorData.image,
+    };
+
+    try {
+      const res = await fetch("http://localhost:3000/api/addDoctors/insert", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await res.json();
+      console.log("Server response:", result); // ✅ Add this to debug
+
+      if (res.ok && result.success) {
+        alert("Doctor successfully added!");
+        setDoctorData({
+          name: "",
+          degree: "",
+          experience: "",
+          about: "",
+          image: null,
+        });
+        setPreview(null);
+      } else {
+        alert(result.message || "Failed to add doctor.");
+      }
+    } catch (error) {
+      console.error("Error adding doctor:", error);
+      alert("Something went wrong while adding doctor.");
     }
-
-    console.log("Doctor Added:", doctorData);
-    alert("Doctor successfully added!");
-
-    // Reset data and preview after submission
-    setDoctorData({
-      name: "",
-      degree: "",
-      experience: "",
-      about: "",
-      image: null,
-    });
-
-    setPreview(null);
   };
 
   return (
@@ -83,11 +105,8 @@ const AddDoctors = () => {
           onChange={handleChange}
           required
         />
-
-        {/* Image Upload Section */}
         <input type='file' accept='image/*' onChange={handleImageChange} />
 
-        {/* Image Preview */}
         {preview && (
           <div className='image-preview'>
             <img src={preview} alt='Doctor Preview' />
@@ -97,7 +116,10 @@ const AddDoctors = () => {
         <button type='submit' className='submit-btn1'>
           Add Doctor
         </button>
+
+        
       </form>
+      
     </div>
   );
 };

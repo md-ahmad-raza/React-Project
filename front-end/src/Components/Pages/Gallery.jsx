@@ -20,7 +20,7 @@
       { title: "Dermatology", subtitle: "Skin Care by Experts", image: "gallery15.png" },
       { title: "Mental Health", subtitle: "Support for Emotional Well-Being", image: "gallery16.png" },
     ];
-    
+    //
 
     return (
       <div className="gallery-container">

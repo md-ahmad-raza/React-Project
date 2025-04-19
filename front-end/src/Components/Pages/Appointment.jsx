@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "../Style/Appointment.css";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BookAppointment = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     reason: "",
     name: "",
@@ -14,25 +16,74 @@ const BookAppointment = () => {
     time: "",
   });
 
-  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { reason, name, email, phone, date, time } = formData;
+    setIsSubmitting(true);
 
-    if (reason && name && email && phone && date && time) {
-      setMessage("Appointment Booked Successfully!");
+    try {
+      const { reason, name, email, phone, date, time } = formData;
 
-      // Redirect to success page after 1 second
-      setTimeout(() => {
-        navigate("/AppointmentSuccess");
-      }, 1000);
-    } else {
-      setMessage("Please fill in all fields.");
+      if (!reason || !name || !email || !phone || !date || !time) {
+        toast.error("Please fill in all fields");
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        toast.error("Please enter a valid email address");
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!/^\d{10,15}$/.test(phone)) {
+        toast.error("Please enter a valid phone number (10-15 digits)");
+        setIsSubmitting(false);
+        return;
+      }
+
+      const response = await axios.post(
+        "http://localhost:3000/api/appointment/insert",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200 || response.status === 201) {
+        setFormData({
+          reason: "",
+          name: "",
+          email: "",
+          phone: "",
+          date: "",
+          time: "",
+        });
+
+        setTimeout(() => navigate("/AppointmentSuccess"), 1000);
+      } else {
+        throw new Error(response.data.message || "Failed to book appointment");
+      }
+    } catch (error) {
+      console.error("Booking error:", error);
+
+      let errorMessage = "Error booking appointment";
+      if (error.response) {
+        errorMessage = error.response.data.message || errorMessage;
+      } else if (error.request) {
+        errorMessage = "No response from server. Please try again.";
+      }
+
+      toast.error(errorMessage);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -49,24 +100,24 @@ const BookAppointment = () => {
 
   return (
     <div className='appointment-page'>
+      <ToastContainer position='top-center' autoClose={3000} />
       <div className='appointment-container'>
         <div className='appointment-header'>
           <h2>Book Appointment</h2>
-          <button
-            className='close-btn'
-            onClick={() => (window.location.href = "/")}
-          >
-            ×
-          </button>
         </div>
         <div className='appointment-content'>
           <form onSubmit={handleSubmit}>
             <label htmlFor='reason'>Reason for Visit</label>
-            <select name='reason' required onChange={handleChange}>
+            <select
+              name='reason'
+              required
+              onChange={handleChange}
+              value={formData.reason}
+            >
               <option value=''>Select a reason</option>
-              <option value='checkup'>Yearly Check-Up</option>
+              <option value='checkup'>Check-Up</option>
+              <option value='admit'>Admit</option>
               <option value='consultation'>Consultation</option>
-              <option value='followup'>Monthly Check-Up</option>
             </select>
 
             <label htmlFor='name'>Name</label>
@@ -76,6 +127,7 @@ const BookAppointment = () => {
               placeholder='Enter your name'
               required
               onChange={handleChange}
+              value={formData.name}
             />
 
             <label htmlFor='email'>Email Address</label>
@@ -85,6 +137,7 @@ const BookAppointment = () => {
               placeholder='Enter your email'
               required
               onChange={handleChange}
+              value={formData.email}
             />
 
             <label htmlFor='phone'>Phone Number</label>
@@ -94,6 +147,9 @@ const BookAppointment = () => {
               placeholder='Enter your phone number'
               required
               onChange={handleChange}
+              value={formData.phone}
+              pattern='[0-9]{10,15}'
+              title='10-15 digit phone number'
             />
 
             <label htmlFor='date'>Select Date</label>
@@ -103,10 +159,16 @@ const BookAppointment = () => {
               required
               onChange={handleChange}
               min={new Date().toISOString().split("T")[0]}
+              value={formData.date}
             />
 
             <label htmlFor='time'>Select Time</label>
-            <select name='time' required onChange={handleChange}>
+            <select
+              name='time'
+              required
+              onChange={handleChange}
+              value={formData.time}
+            >
               {generateTimes().map((time, index) => (
                 <option key={index} value={time}>
                   {time}
@@ -116,7 +178,7 @@ const BookAppointment = () => {
 
             <div className='appointment-footer'>
               <button
-                type='reset'
+                type='button'
                 className='cancel-btn'
                 onClick={() =>
                   setFormData({
@@ -128,23 +190,19 @@ const BookAppointment = () => {
                     time: "",
                   })
                 }
+                disabled={isSubmitting}
               >
                 Clear
               </button>
-              <button type='submit' className='book-btn'>
-                Book Now
+              <button
+                type='submit'
+                className='book-btn'
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Booking..." : "Book Now"}
               </button>
             </div>
           </form>
-          {message && (
-            <p
-              style={{
-                color: message.includes("Successfully") ? "green" : "red",
-              }}
-            >
-              {message}
-            </p>
-          )}
         </div>
       </div>
     </div>

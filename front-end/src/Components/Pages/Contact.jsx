@@ -1,6 +1,50 @@
+import { useState } from "react";
 import "../Style/Contact.css";
+import axios from "axios";
+import { toast } from "react-toastify"; // Optional: for better user messages
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { name, email, message } = formData;
+
+    if (name && email && message) {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/api/feedback/insert",
+          {
+            Name: name,
+            Email: email,
+            Message: message,
+          }
+        );
+
+        if (response.status === 201) {
+          toast.success("Feedback sent successfully!");
+          setFormData({ name: "", email: "", message: "" }); // clear form
+        } else {
+          toast.error("Failed to send feedback.");
+        }
+      } catch (error) {
+        console.error("Error sending feedback:", error);
+        toast.error("An error occurred while sending feedback.");
+      }
+    } else {
+      toast.warning("Please fill in all fields.");
+    }
+  };
+
   return (
     <div className='contact-us-container'>
       <h2 className='section-title'>Contact Us</h2>
@@ -12,14 +56,26 @@ const ContactUs = () => {
         {/* Contact Form */}
         <div className='contact-form'>
           <h3>Give Feedback</h3>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className='form-group'>
               <label htmlFor='name'>Name</label>
-              <input type='text' id='name' placeholder='Your Name' />
+              <input
+                type='text'
+                id='name'
+                placeholder='Your Name'
+                value={formData.name}
+                onChange={handleChange}
+              />
             </div>
             <div className='form-group'>
               <label htmlFor='email'>Email</label>
-              <input type='email' id='email' placeholder='Your Email' />
+              <input
+                type='email'
+                id='email'
+                placeholder='Your Email'
+                value={formData.email}
+                onChange={handleChange}
+              />
             </div>
             <div className='form-group'>
               <label htmlFor='message'>Message</label>
@@ -27,6 +83,8 @@ const ContactUs = () => {
                 id='message'
                 rows='5'
                 placeholder='Your Message'
+                value={formData.message}
+                onChange={handleChange}
               ></textarea>
             </div>
             <button type='submit' className='submit-button'>

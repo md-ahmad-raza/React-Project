@@ -43,14 +43,6 @@ body {
   color: #2c3e50;
 }
 
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: #2c3e50;
-}
-
 .appointment-content {
   display: flex;
   flex-direction: column;
@@ -211,4 +203,18 @@ select:focus {
 
 .book-btn:hover {
   background-color: #2980b9;
+}
+
+.list-btn {
+  padding: 6px 12px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.list-btn:hover {
+  background-color: #005fa3;
 }

@@ -10,10 +10,10 @@ const AdminPanel = () => {
           <h1>Admin Panel</h1>
           <ul>
             <li>
-              <a href='/allPatients'>Show All Patients</a>
+              <a href='/appointmentList'>Show All Patients</a>
             </li>
             <li>
-              <a href='/newPatients'>Show New Registered Patients</a>
+              <a href='/newAppointments'>Show New Registered Patients</a>
             </li>
             <li>
               <a href='/EditDoctors'>Show All Doctors</a>
@@ -22,7 +22,15 @@ const AdminPanel = () => {
               <Link to='/addDoctors'>Add Doctors</Link>
             </li>
             <li>
-              <a href='/Complain box'>Show Complaints</a>
+              <a href='/complainList'>Show Complaints</a>
+            </li>
+
+            <li>
+              <a href='/contactList'>Show FeedBack</a>
+            </li>
+
+            <li>
+              <a href='/signupList'>All Sinup users</a>
             </li>
             <li>
               <a href='/login' className='logout-btn'>
@@ -36,7 +44,7 @@ const AdminPanel = () => {
           <h2>Welcome to the Admin Panel</h2>
           <p>
             Select an option from the sidebar to manage patients, doctors, or
-            complaints.
+            complaints and feedback.
           </p>
         </div>
       </div>
