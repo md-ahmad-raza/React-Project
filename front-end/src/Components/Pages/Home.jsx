@@ -62,7 +62,7 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
-    }, 2000); // Change slide every 10 seconds
+    }, 2000); // Change slide every 2 seconds
     return () => clearInterval(interval);
   }, [carouselImages.length]);
 
@@ -115,19 +115,6 @@ const Home = () => {
         </div>
         <div className='feature-card'>
           <h3>Surgeon</h3>
-          <p>
-            We performing surgical procedures to diagnose or treat diseases or
-            injuries by the well experienced Doctors.
-          </p>
-
-
-       
-             <p>
-            We performing surgical procedures to diagnose or treat diseases or
-            injuries by the well experienced Doctors.
-          </p>
-
-
           <p>
             We performing surgical procedures to diagnose or treat diseases or
             injuries by the well experienced Doctors.
@@ -198,10 +185,6 @@ const Home = () => {
               <img src='service-icon4.png' alt='Icon 4' />
             </div>
             <h3>Dental Care</h3>
-            <p>
-              High-quality dental care services with experienced professionals.
-            </p>
-
             <p>
               High-quality dental care services with experienced professionals.
             </p>
