@@ -34,6 +34,12 @@ app.use("/api/signup", signupRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/addDoctors", addDoctorsRouter);
 
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on http://localhost:${PORT}`);
+});
+
 // ✅ Test route
 app.get("/", (req, res) => {
   res.send("Server is running");
