@@ -23,10 +23,6 @@ const Profile = () => {
     navigate("/logout");
   };
 
-  const handleEditProfile = () => {
-    navigate("/editProfile");
-  };
-
   return (
     <div className='profile-page'>
       <div className='profile-wrapper'>
@@ -47,9 +43,6 @@ const Profile = () => {
         </div>
 
         <div className='profile-actions'>
-          <button className='edit-btn' onClick={handleEditProfile}>
-            Edit Profile
-          </button>
           <button className='logout-btn' onClick={handleLogout}>
             Logout
           </button>

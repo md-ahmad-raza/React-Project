@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../Style/Contact.css";
 import axios from "axios";
-import { toast } from "react-toastify"; // Optional: for better user messages
+import { toast, ToastContainer } from "react-toastify"; // Optional: for better user messages
 import "react-toastify/dist/ReactToastify.css";
 
 const ContactUs = () => {
@@ -47,6 +47,7 @@ const ContactUs = () => {
 
   return (
     <div className='contact-us-container'>
+      <ToastContainer position='top-center' autoClose={3000} />
       <h2 className='section-title'>Contact Us</h2>
       <p className='contact-description'>
         We love to hear from you! Reach out to us for any inquiries or feedback.

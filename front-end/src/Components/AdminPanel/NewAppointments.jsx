@@ -101,6 +101,11 @@ const NewAppointments = () => {
           </table>
         )}
       </div>
+      <div style={{ marginTop: "30px", textAlign: "center" }}>
+        <a href='/adminPanel' className='back-link'>
+          ← Back to Admin Panel
+        </a>
+      </div>
     </div>
   );
 };

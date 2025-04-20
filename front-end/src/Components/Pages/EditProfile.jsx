@@ -5,9 +5,9 @@ import "../Style/EditProfile.css"; // Ensure this path matches your project stru
 const EditProfile = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: "Ahmad Raza",
-    email: "ar@gmail.com",
-    phone: "+91 234 567 890",
+    username: "",
+    email: "",
+    phone: "",
   });
 
   const handleChange = (e) => {

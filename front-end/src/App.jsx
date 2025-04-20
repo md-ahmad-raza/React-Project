@@ -18,13 +18,10 @@ import AboutDoctors from "./Components/Pages/AboutDoctors";
 import About from "./Components/Pages/About";
 import Gallery from "./Components/Pages/Gallery";
 import Contact from "./Components/Pages/Contact";
-
 import Complain from "./Components/Pages/Complain";
 import Profile from "./Components/Pages/Profile";
 import Logout from "./Components/Pages/Logout";
 import EditProfile from "./Components/Pages/EditProfile";
-import AppointmentSuccess from "./Components/Pages/AppointmentSuccess";
-import ComplainSuccess from "./Components/Pages/ComplainSuccess";
 
 // Admin Panel Pages
 import AdminPanel from "./Components/AdminPanel/AdminPanel";
@@ -39,7 +36,7 @@ import SignupList from "./Components/Pages/SignupList";
 import EditSignup from "./Components/Pages/EditSignup";
 import Login from "./Components/Pages/Login";
 import Signup from "./Components/Pages/Signup";
-
+import ShowAllDoctorsList from "./Components/AdminPanel/ShowAllDoctorsList";
 
 function App() {
   return (
@@ -66,7 +63,7 @@ function MainLayout() {
     "/editSignup",
     "/login",
     "/signup",
-    
+    "/allDoctorsList",
   ];
 
   const isAdminRoute = adminRoutes.includes(location.pathname);
@@ -87,13 +84,10 @@ function MainLayout() {
         <Route path='/about' element={<About />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/contact' element={<Contact />} />
-
         <Route path='/complain' element={<Complain />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/logout' element={<Logout />} />
         <Route path='/editProfile' element={<EditProfile />} />
-        <Route path='/appointmentSuccess' element={<AppointmentSuccess />} />
-        <Route path='/complainSuccess' element={<ComplainSuccess />} />
 
         {/* Admin Panel Routes */}
         <Route path='/adminPanel' element={<AdminPanel />} />
@@ -108,7 +102,7 @@ function MainLayout() {
         <Route path='/editSignup' element={<EditSignup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-    
+        <Route path='/allDoctorsList' element={<ShowAllDoctorsList />} />
       </Routes>
 
       {/* Show Footer only if not in admin routes */}

@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "../Style/Appointment.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const BookAppointment = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     reason: "",
     name: "",
@@ -58,6 +56,7 @@ const BookAppointment = () => {
       );
 
       if (response.status === 200 || response.status === 201) {
+        toast.success("Appointment booked successfully!");
         setFormData({
           reason: "",
           name: "",
@@ -66,8 +65,6 @@ const BookAppointment = () => {
           date: "",
           time: "",
         });
-
-        setTimeout(() => navigate("/AppointmentSuccess"), 1000);
       } else {
         throw new Error(response.data.message || "Failed to book appointment");
       }

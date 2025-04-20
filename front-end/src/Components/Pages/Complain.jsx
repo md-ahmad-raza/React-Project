@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../Style/Complain.css";
 
 const ComplaintPage = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     patientName: "",
     description: "",
@@ -40,22 +40,61 @@ const ComplaintPage = () => {
         const result = await response.json();
 
         if (response.ok) {
-          alert("Complaint submitted successfully");
-          navigate("/ComplainSuccess");
+          toast.success("Complaint submitted successfully", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          // Reset form after successful submission
+          setFormData({
+            patientName: "",
+            description: "",
+            department: "General Medicine",
+            date: "",
+          });
         } else {
-          alert("Failed to submit complaint: " + result.message);
+          toast.error("Failed to submit complaint: " + result.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       } catch (error) {
         console.error("Error submitting complaint:", error);
-        alert("An error occurred while submitting the complaint.");
+        toast.error("An error occurred while submitting the complaint.", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     } else {
-      alert("Please fill in all fields.");
+      toast.warning("Please fill in all fields.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
   return (
     <div className='complaint-page'>
+      <ToastContainer />
       <div className='form-container'>
         <h2 className='form-title'>Complaint Box</h2>
         <form className='complaint-form' onSubmit={handleSubmit}>

@@ -116,10 +116,12 @@ const AddDoctors = () => {
         <button type='submit' className='submit-btn1'>
           Add Doctor
         </button>
-
-        
       </form>
-      
+      <div style={{ marginTop: "30px", textAlign: "center" }}>
+        <a href='/adminPanel' className='back-link'>
+          ← Back to Admin Panel
+        </a>
+      </div>
     </div>
   );
 };

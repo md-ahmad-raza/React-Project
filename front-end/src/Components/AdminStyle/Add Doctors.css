@@ -108,3 +108,17 @@
     max-height: 150px; /* Scales better on smaller screens */
   }
 }
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #3498db;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #21618c;
+  text-decoration: underline;
+}

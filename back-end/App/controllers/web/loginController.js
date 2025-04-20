@@ -23,16 +23,13 @@ const loginInsert = async (req, res) => {
       .status(201)
       .json({ success: true, message: "Signup successful", user: newUser });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Internal server error",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      error: error.message,
+    });
   }
 };
-
 
 // ✅ View all users
 const loginView = async (req, res) => {
@@ -42,13 +39,11 @@ const loginView = async (req, res) => {
       .status(200)
       .json({ success: true, message: "All login users", data: users });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Internal server error",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      error: error.message,
+    });
   }
 };
 
@@ -64,21 +59,17 @@ const loginDelete = async (req, res) => {
         .json({ success: false, message: "User not found" });
     }
 
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "User deleted successfully",
-        data: deletedUser,
-      });
+    res.status(200).json({
+      success: true,
+      message: "User deleted successfully",
+      data: deletedUser,
+    });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Internal server error",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      error: error.message,
+    });
   }
 };
 
@@ -100,21 +91,17 @@ const loginUpdate = async (req, res) => {
         .json({ success: false, message: "User not found" });
     }
 
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "User updated successfully",
-        data: updatedUser,
-      });
+    res.status(200).json({
+      success: true,
+      message: "User updated successfully",
+      data: updatedUser,
+    });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Internal server error",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      error: error.message,
+    });
   }
 };
 
@@ -150,8 +137,6 @@ const userLogin = async (req, res) => {
     });
   }
 };
-
-
 
 module.exports = {
   loginInsert,

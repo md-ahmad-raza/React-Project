@@ -12,9 +12,8 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 // ✅ CORS configuration
 app.use(
   cors({
-    origin: "http://localhost:5173", // Adjust if your frontend runs on a different port
+    origin: "*", // ⚠️ Don't use in production
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
   })
 );
 
