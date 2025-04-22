@@ -25,30 +25,6 @@ const AboutDoctors = () => {
     <div className='doctors-page'>
       <h2 className='title'>Our Doctors</h2>
       <div className='doctors-container'>
-<<<<<<< HEAD
-        {doctors.map((doctor) => (
-          <div className='doctor-card' key={doctor.id}>
-            <img
-              src={doctor.image}
-              alt={doctor.name}
-              className='doctor-image'
-            />
-            <div className='doctor-info'>
-              <h3 className='doctor-name'>{doctor.name}</h3>
-              <p className='doctor-degree'>{doctor.degree}</p>
-              <p>
-                <strong>Experience:</strong> {doctor.experience}
-              </p>
-              <p>
-                <strong>About:</strong> {doctor.about}
-              </p>
-              <button
-                className='book-btn'
-                onClick={() => navigate(`/appointment/${doctor.id}`)}
-              >
-                Book Appointment
-              </button>
-=======
         {doctors.length > 0 ? (
           doctors.map((doctor) => (
             <div className='doctor-card' key={doctor._id}>
@@ -73,7 +49,6 @@ const AboutDoctors = () => {
                   Book Appointment
                 </button>
               </div>
->>>>>>> 475c5a084f4aba3c0addf1def3b359ad4e08c05c
             </div>
           ))
         ) : (

@@ -18,7 +18,7 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #f5f7fa;
   min-height: 100vh;
 }
@@ -34,7 +34,7 @@
 }
 
 .doctors-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -56,7 +56,7 @@
 }
 
 .doctors-container h1::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 0;
@@ -88,8 +88,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .empty-state svg {
@@ -157,7 +161,7 @@
 }
 
 .doctor-name::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 8px;
   height: 8px;
@@ -175,7 +179,7 @@
 }
 
 .doctor-degree::before {
-  content: '🎓';
+  content: "🎓";
   margin-right: 6px;
 }
 
@@ -188,7 +192,7 @@
 }
 
 .doctor-experience::before {
-  content: '⏳';
+  content: "⏳";
   margin-right: 6px;
 }
 
@@ -269,7 +273,7 @@
 }
 
 .doctor-edit-form h3::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -395,24 +399,24 @@
   .doctors-page {
     padding: 1.5rem;
   }
-  
+
   .doctors-container {
     padding: 1.5rem;
   }
-  
+
   .doctors-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .doctor-edit-form {
     padding: 1.5rem;
   }
-  
+
   .doctor-form-footer {
     flex-direction: column;
   }
-  
+
   .cancel-btn,
   .update-btn {
     width: 100%;
@@ -422,8 +426,14 @@
 
 /* Animation Enhancements */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .doctor-card {
@@ -431,8 +441,18 @@
 }
 
 /* Delay animations for each card */
-.doctor-card:nth-child(1) { animation-delay: 0.1s; }
-.doctor-card:nth-child(2) { animation-delay: 0.2s; }
-.doctor-card:nth-child(3) { animation-delay: 0.3s; }
-.doctor-card:nth-child(4) { animation-delay: 0.4s; }
-.doctor-card:nth-child(5) { animation-delay: 0.5s; }
+.doctor-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.doctor-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.doctor-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.doctor-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.doctor-card:nth-child(5) {
+  animation-delay: 0.5s;
+}

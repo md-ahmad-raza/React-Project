@@ -17,8 +17,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 100%;
-  max-width: 900px;
+  width: 60%;
+  max-width: 500px;
 }
 
 .doctor-card {
@@ -37,8 +37,8 @@
 }
 
 .doctor-image {
-  width: 130px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -87,8 +87,8 @@
   }
 
   .doctor-image {
-    width: 110px;
-    height: 110px;
+    width: 60px;
+    height: 60px;
   }
 
   .doctor-info {
